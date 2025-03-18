@@ -27,7 +27,7 @@ return new class extends Migration
             $table->integer('user_id');
             $table->integer('post_id');
             $table->text('content');
-            $table->timestamp(0);
+            $table->timestamps(0);
             $table->softDeletes();
         });
 
@@ -46,7 +46,7 @@ return new class extends Migration
             $table->integer('sender_id');
             $table->integer('receiver_id');
             $table->text('message_content');
-            $table->timestamp(0);
+            $table->timestamps(0);
             $table->softDeletes();
         });
     }
@@ -56,6 +56,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists(['post', 'likes', 'comments', 'messages']);
+        Schema::dropIfExists('posts');
+        Schema::dropIfExists('likes');
+        Schema::dropIfExists('comments');
+        Schema::dropIfExists('messages');
     }
 };
