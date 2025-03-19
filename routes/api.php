@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LikeController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -24,5 +25,11 @@ Route::prefix('v1')->group(function () {
     Route::prefix('comments')->group(function () { // http://localhost:8000/api/v1/comments
         Route::post('/', [CommentController::class, 'store']); // Membuat komentar baru.
         Route::delete('{$id}', [CommentController::class, 'destroy']); // Menghapus komentar.
+    });
+
+    // Menghandle likes
+    Route::prefix('likes')->group(function () {
+        Route::post('/', [LikeController::class, 'store']); // Menyimpan like baru.
+        Route::delete('{id}', [LikeController::class, 'destroy']); // Menghapus like.
     });
 });
