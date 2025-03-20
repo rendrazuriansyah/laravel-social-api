@@ -46,4 +46,14 @@ class MessageController extends Controller
             'data' => $message,
         ]);
     }
+
+    public function destroy(int $id)
+    {
+        Message::destroy($id);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil menghapus pesan',
+        ]);
+    }
 }
