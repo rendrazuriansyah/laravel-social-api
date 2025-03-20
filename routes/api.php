@@ -38,6 +38,7 @@ Route::prefix('v1')->group(function () {
     Route::prefix('messages')->group(function () {
         Route::post('/', [MessageController::class, 'store']); // Mengirim pesan.
         Route::get('{id}', [MessageController::class, 'show']); // Melihat detail pesan.
+        Route::get('getMessages/{user_id}', [MessageController::class, 'getMessages']); // Melihat pesan-pesan berdasarkan user id.
         Route::delete('{id}', [MessageController::class, 'destroy']); // Menghapus pesan.
     });
 });
