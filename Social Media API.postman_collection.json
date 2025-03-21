@@ -1,0 +1,456 @@
+{
+	"info": {
+		"_postman_id": "33e28586-44c9-4938-b1cf-1a03e3816235",
+		"name": "Social Media API",
+		"description": "StartFragment\n\n# API Documentation\n\n## Overview\n\nThis API provides functionality to interact with the system, enabling users to retrieve, create, update, and delete data. The API follows RESTful principles and returns responses in JSON format.\n\n## Base URL\n\n```\nhttps://api.example.com/v1\n\n ```\n\n## Authentication\n\nAll requests must include an API key in the headers:\n\n```\nAuthorization: Bearer YOUR_API_KEY\n\n ```\n\n## Endpoints\n\n### 1\\. Get All Items\n\n- **Endpoint:** `/items`\n    \n- **Method:** `GET`\n    \n- **Description:** Retrieves a list of all items.\n    \n- GET /items\n    \n- { \"status\": \"success\", \"data\": \\[ {\"id\": 1, \"name\": \"Item 1\"}, {\"id\": 2, \"name\": \"Item 2\"} \\]}\n    \n\n### 2\\. Get Item by ID\n\n- **Endpoint:** `/items/{id}`\n    \n- **Method:** `GET`\n    \n- **Description:** Retrieves details of a specific item.\n    \n- GET /items/1\n    \n- { \"status\": \"success\", \"data\": {\"id\": 1, \"name\": \"Item 1\"}}\n    \n\n### 3\\. Create New Item\n\n- **Endpoint:** `/items`\n    \n- **Method:** `POST`\n    \n- **Description:** Creates a new item.\n    \n- { \"name\": \"New Item\"}\n    \n- { \"status\": \"success\", \"data\": {\"id\": 3, \"name\": \"New Item\"}}\n    \n\n### 4\\. Update Item\n\n- **Endpoint:** `/items/{id}`\n    \n- **Method:** `PUT`\n    \n- **Description:** Updates an existing item.\n    \n- { \"name\": \"Updated Item\"}\n    \n- { \"status\": \"success\", \"data\": {\"id\": 1, \"name\": \"Updated Item\"}}\n    \n\n### 5\\. Delete Item\n\n- **Endpoint:** `/items/{id}`\n    \n- **Method:** `DELETE`\n    \n- **Description:** Deletes an existing item.\n    \n- { \"status\": \"success\", \"message\": \"Item deleted successfully\"}\n    \n\n## Error Handling\n\n| Status Code | Description |\n| --- | --- |\n| 400 | Bad Request - Invalid input |\n| 401 | Unauthorized - Invalid API Key |\n| 403 | Forbidden - Access denied |\n| 404 | Not Found - Resource not found |\n| 500 | Internal Server Error - Something went wrong |",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43175918"
+	},
+	"item": [
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Get All Posts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzQyNTQ1NTIwLCJleHAiOjE3NDI1NDkxMjAsIm5iZiI6MTc0MjU0NTUyMCwianRpIjoiaXd1bFIyak9kb25PeGpPQSIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.kA-yX37hIuDcR628VldbjUFjflcdNwCY7XyBpBI9TEg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/posts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Post (Create new post)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzQyNTQyNTAxLCJleHAiOjE3NDI1NDYxMDEsIm5iZiI6MTc0MjU0MjUwMSwianRpIjoiWUJFbFBkNDd2dkhRUUhWRCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.NBMmzAEQp6WSxsC7grS2Hu5lhy8SkNm9kvLNYw947Ao",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"Laravel vel vel vel vel vel vel\",\r\n    \"image_url\": \"https://placehold.co/300\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/posts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Posts By ID (Get detail post))",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/posts/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Post By ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"Lirivil vil vil vil vil\",\r\n    \"image_url\": \"https://picsum.photos/300\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/posts/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Post By ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/posts/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "Create Comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzQyNTQzNzgwLCJleHAiOjE3NDI1NDczODAsIm5iZiI6MTc0MjU0Mzc4MCwianRpIjoiQTVNYkxvQlpYN2NmcFVrSSIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.S9lUO_UfGMwJsicF9aB1hdA9lDnpGHY6fQy18B7JbZM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"post_id\": 2,\r\n    \"content\": \"Mantaps lur\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/comments/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"comments",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Comment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/comments/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"comments",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Likes",
+			"item": [
+				{
+					"name": "Like Post (Insert new like)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzQyNTQzNzgwLCJleHAiOjE3NDI1NDczODAsIm5iZiI6MTc0MjU0Mzc4MCwianRpIjoiQTVNYkxvQlpYN2NmcFVrSSIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.S9lUO_UfGMwJsicF9aB1hdA9lDnpGHY6fQy18B7JbZM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"post_id\": \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/likes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"likes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Like (Unlike)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/likes/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"likes",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Messages",
+			"item": [
+				{
+					"name": "Send Message",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzQyNTQzNzgwLCJleHAiOjE3NDI1NDczODAsIm5iZiI6MTc0MjU0Mzc4MCwianRpIjoiQTVNYkxvQlpYN2NmcFVrSSIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.S9lUO_UfGMwJsicF9aB1hdA9lDnpGHY6fQy18B7JbZM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"receiver_id\": \"3\",\r\n    \"message_content\": \"Bla bla bla\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/messages",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Message By ID (get detail message)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/messages/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"messages",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Message (delete a message)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/messages/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"messages",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Messages By User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/messages/getMessages/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"messages",
+								"getMessages",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"rendra\",\r\n    \"email\": \"rendra@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"example@gmail.com\",\r\n    \"password\": \"example\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
