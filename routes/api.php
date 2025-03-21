@@ -8,15 +8,12 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\JWTAuthController;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
-
 // API Versioning (v1)
 Route::prefix('v1')->group(function () {
     // Handle auth...
     Route::post('register', [JWTAuthController::class, 'register']);
-    
+    Route::post('login', [JWTAuthController::class, 'login']);
+
     // Menghandle posts
     Route::prefix('posts')->group(function () { // http://localhost:8000/api/v1/posts
         Route::get('/', [PostController::class, 'index']); // Mengambil semua data.
