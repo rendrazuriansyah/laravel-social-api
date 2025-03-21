@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class PostController extends Controller
 {
@@ -20,8 +21,13 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
+        $user = JWTAuth::parseToken()->authenticate();
+        // dd($user); // jika di uncomment, maka akan error 500 karena
+                    // dd() menghentikan proses dan tidak mengembalikan
+                    // response apapun, sehingga tidak ada response yang
+                    // dikirimkan ke client dan menyebabkan error 500
+
         $validator = Validator::make($request->all(), [
-            'user_id' => 'required',
             'content' => 'required|string|max:255',
             'image_url' => 'nullable',
         ]);
@@ -36,7 +42,7 @@ class PostController extends Controller
 
         // Jika validasi berhasil, simpan data ke database
         $post = Post::create([
-            'user_id' => $request->user_id,
+            'user_id' => $user->id,
             'content' => $request->content,
             'image_url' => $request->image_url,
         ]);
